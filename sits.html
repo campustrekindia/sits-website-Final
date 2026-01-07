@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SITS - Sanjeevani Integrated Technological Solutions | NABL Accredited Calibration Lab</title>
+    <meta name="description" content="NABL Accredited Laboratory for Instrument Calibration, Process Validation, HVAC & Clean Room Validation, PLC Validation, and Steam Quality Testing.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'slate-dark': '#0f172a',
+                        'teal-accent': '#14b8a6',
+                        'teal-hover': '#0d9488',
+                        'light-gray': '#f8fafc',
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #14b8a6;
+            border-radius: 4px;
+        }
+        
+        /* Rolling Image Strip Animation */
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        
+        .rolling-strip {
+            animation: scroll 60s linear infinite;
+        }
+        
+        .rolling-strip:hover {
+            animation-play-state: paused;
+        }
+        
+        /* Hero Background Overlay */
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.8) 50%, rgba(20, 184, 166, 0.2) 100%);
+        }
+        
+        /* Service Card Hover Effects */
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(20, 184, 166, 0.25);
+        }
+        
+        .service-card:hover .card-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: #14b8a6;
+            color: white;
+        }
+        
+        .card-icon {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Tab Active State */
+        .tab-btn.active {
+            background: #14b8a6;
+            color: white;
+            box-shadow: 0 10px 30px -5px rgba(20, 184, 166, 0.4);
+        }
+        
+        /* Form Input Focus */
+        .form-input:focus {
+            border-color: #14b8a6;
+            box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.2);
+        }
+        
+        .form-input.error {
+            border-color: #ef4444;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+        }
+        
+        .form-input.valid {
+            border-color: #22c55e;
+            box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+        }
+        
+        /* Stats Counter Animation */
+        .stat-number {
+            background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Grid Pattern Background */
+        .grid-pattern {
+            background-image: 
+                linear-gradient(rgba(20, 184, 166, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(20, 184, 166, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Pulse Ring Animation */
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1.3);
+                opacity: 0;
+            }
+        }
+        
+        .pulse-ring::before {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border: 2px solid #14b8a6;
+            border-radius: 50%;
+            animation: pulse-ring 2s ease-out infinite;
+        }
+        
+        /* Mobile Menu Animation */
+        .mobile-menu {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .mobile-menu.hidden {
+            opacity: 0;
+            transform: translateY(-20px);
+            pointer-events: none;
+        }
+        
+        .mobile-menu.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+        
+        /* Search Highlight */
+        .highlight {
+            background: rgba(20, 184, 166, 0.3);
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+        
+        /* Certification Badge */
+        .cert-badge {
+            background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+            box-shadow: 0 4px 15px rgba(20, 184, 166, 0.4);
+        }
+        
+        /* Section Divider */
+        .section-divider {
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #14b8a6 0%, #0d9488 100%);
+            border-radius: 2px;
+        }
+        
+        /* Image Strip Item Hover */
+        .strip-item {
+            transition: all 0.3s ease;
+        }
+        
+        .strip-item:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="bg-light-gray">
+    
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-slate-dark/95 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#home" class="flex items-center space-x-3 group">
+                    <div class="w-12 h-12 bg-teal-accent rounded-lg flex items-center justify-center transform group-hover:rotate-6 transition-transform duration-300">
+                        <span class="text-white font-bold text-xl">S</span>
+                    </div>
+                    <div>
+                        <span class="text-white font-bold text-xl tracking-tight">SITS</span>
+                        <span class="hidden sm:block text-teal-accent text-xs font-medium">Precision Engineering</span>
+                    </div>
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-1">
+                    <a href="#home" class="nav-link px-4 py-2 text-gray-300 hover:text-teal-accent font-medium transition-colors duration-200">Home</a>
+                    <a href="#services" class="nav-link px-4 py-2 text-gray-300 hover:text-teal-accent font-medium transition-colors duration-200">Services</a>
+                    <a href="#about" class="nav-link px-4 py-2 text-gray-300 hover:text-teal-accent font-medium transition-colors duration-200">About</a>
+                    <a href="#certifications" class="nav-link px-4 py-2 text-gray-300 hover:text-teal-accent font-medium transition-colors duration-200">Certifications</a>
+                    <a href="#contact" class="nav-link px-4 py-2 text-gray-300 hover:text-teal-accent font-medium transition-colors duration-200">Contact</a>
+                </div>
+                
+                <!-- CTA Button -->
+                <div class="hidden md:block">
+                    <a href="#contact" class="inline-flex items-center px-6 py-3 bg-teal-accent hover:bg-teal-hover text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-teal-accent/30 hover:-translate-y-0.5">
+                        <i class="fas fa-file-invoice mr-2"></i>
+                        Get a Quote
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-colors">
+                    <i class="fas fa-bars text-xl" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu hidden md:hidden bg-slate-dark border-t border-white/10">
+            <div class="px-4 py-4 space-y-2">
+                <a href="#home" class="mobile-nav-link block px-4 py-3 text-gray-300 hover:text-white hover:bg-teal-accent/10 rounded-lg font-medium transition-colors">Home</a>
+                <a href="#services" class="mobile-nav-link block px-4 py-3 text-gray-300 hover:text-white hover:bg-teal-accent/10 rounded-lg font-medium transition-colors">Services</a>
+                <a href="#about" class="mobile-nav-link block px-4 py-3 text-gray-300 hover:text-white hover:bg-teal-accent/10 rounded-lg font-medium transition-colors">About</a>
+                <a href="#certifications" class="mobile-nav-link block px-4 py-3 text-gray-300 hover:text-white hover:bg-teal-accent/10 rounded-lg font-medium transition-colors">Certifications</a>
+                <a href="#contact" class="mobile-nav-link block px-4 py-3 text-gray-300 hover:text-white hover:bg-teal-accent/10 rounded-lg font-medium transition-colors">Contact</a>
+                <a href="#contact" class="block px-4 py-3 bg-teal-accent text-white text-center rounded-lg font-semibold mt-4">Get a Quote</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center bg-slate-dark overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1920&q=80" alt="Laboratory Background" class="w-full h-full object-cover opacity-20">
+            <div class="hero-overlay absolute inset-0"></div>
+        </div>
+        
+        <!-- Grid Pattern Overlay -->
+        <div class="absolute inset-0 grid-pattern"></div>
+        
+        <!-- Floating Elements -->
+        <div class="absolute top-1/4 right-1/4 w-64 h-64 bg-teal-accent/5 rounded-full blur-3xl float-animation"></div>
+        <div class="absolute bottom-1/4 left-1/4 w-96 h-96 bg-teal-accent/5 rounded-full blur-3xl float-animation" style="animation-delay: -3s;"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <!-- NABL Badge -->
+                    <div class="inline-flex items-center px-4 py-2 bg-teal-accent/10 border border-teal-accent/30 rounded-full">
+                        <i class="fas fa-certificate text-teal-accent mr-2"></i>
+                        <span class="text-teal-accent text-sm font-semibold">NABL Accredited Lab ISO/IEC 17025:2017</span>
+                    </div>
+                    
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
+                        Engineering<br>
+                        <span class="text-teal-accent">Precision.</span>
+                    </h1>
+                    
+                    <p class="text-xl text-gray-400 max-w-xl leading-relaxed">
+                        India's trusted NABL-accredited laboratory delivering world-class instrument calibration, process validation, and compliance solutions for industries that demand absolute accuracy.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#services" class="inline-flex items-center justify-center px-8 py-4 bg-teal-accent hover:bg-teal-hover text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-xl hover:shadow-teal-accent/30 hover:-translate-y-1">
+                            <i class="fas fa-microscope mr-2"></i>
+                            Our Services
+                        </a>
+                        <a href="#contact" class="inline-flex items-center justify-center px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-lg border border-white/20 hover:border-teal-accent/50 transition-all duration-300">
+                            <i class="fas fa-phone-alt mr-2"></i>
+                            Contact Us
+                        </a>
+                    </div>
+                    
+                    <!-- Quick Stats -->
+                    <div class="flex items-center gap-8 pt-4">
+                        <div class="flex items-center">
+                            <div class="w-3 h-3 bg-green-500 rounded-full mr-2 animate-pulse"></div>
+                            <span class="text-gray-400 text-sm">24/7 Support Available</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-shield-alt text-teal-accent mr-2"></i>
+                            <span class="text-gray-400 text-sm">ISO Certified</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Hero Visual -->
+                <div class="hidden lg:block relative">
+                    <div class="relative w-full aspect-square max-w-lg mx-auto">
+                        <!-- Outer Ring -->
+                        <div class="absolute inset-0 border-2 border-teal-accent/20 rounded-full animate-spin" style="animation-duration: 20s;"></div>
+                        <div class="absolute inset-8 border-2 border-teal-accent/30 rounded-full animate-spin" style="animation-duration: 15s; animation-direction: reverse;"></div>
+                        
+                        <!-- Center Image -->
+                        <div class="absolute inset-16 bg-gradient-to-br from-slate-dark to-teal-accent/20 rounded-full overflow-hidden border-4 border-teal-accent/40">
+                            <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&q=80" alt="Precision Instruments" class="w-full h-full object-cover">
+                        </div>
+                        
+                        <!-- Floating Badges -->
+                        <div class="absolute top-8 right-8 bg-slate-dark/90 backdrop-blur-sm px-4 py-2 rounded-lg border border-teal-accent/30 float-animation">
+                            <span class="text-teal-accent font-semibold text-sm">±0.001% Accuracy</span>
+                        </div>
+                        <div class="absolute bottom-16 left-0 bg-slate-dark/90 backdrop-blur-sm px-4 py-2 rounded-lg border border-teal-accent/30 float-animation" style="animation-delay: -2s;">
+                            <span class="text-teal-accent font-semibold text-sm">ISO 17025:2017</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2">
+            <a href="#stats" class="flex flex-col items-center text-gray-400 hover:text-teal-accent transition-colors">
+                <span class="text-xs mb-2">Scroll Down</span>
+                <i class="fas fa-chevron-down animate-bounce"></i>
+            </a>
+        </div>
+    </section>
+    
+    <!-- Stats Section -->
+    <section id="stats" class="relative bg-slate-dark py-16 border-y border-teal-accent/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="group">
+                    <div class="text-4xl md:text-5xl font-bold stat-number mb-2" data-count="8">0+</div>
+                    <p class="text-gray-400 font-medium">Years of Excellence</p>
+                </div>
+                <div class="group">
+                    <div class="text-4xl md:text-5xl font-bold stat-number mb-2" data-count="500">0+</div>
+                    <p class="text-gray-400 font-medium">Satisfied Clients</p>
+                </div>
+                <div class="group">
+                    <div class="text-4xl md:text-5xl font-bold stat-number mb-2" data-count="10000">0+</div>
+                    <p class="text-gray-400 font-medium">Instruments Calibrated</p>
+                </div>
+                <div class="group">
+                    <div class="text-4xl md:text-5xl font-bold stat-number mb-2">NABL</div>
+                    <p class="text-gray-400 font-medium">Accredited Laboratory</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Rolling Image Strip -->
+    <section class="bg-light-gray py-8 overflow-hidden border-b border-gray-200">
+        <div class="relative">
+            <div class="rolling-strip flex gap-4" style="width: max-content;">
+                <!-- First Set of Images -->
+                <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=200&h=150&fit=crop" alt="Calibration" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?w=200&h=150&fit=crop" alt="Pressure Gauge" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=200&h=150&fit=crop" alt="Laboratory" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=200&h=150&fit=crop" alt="Instruments" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?w=200&h=150&fit=crop" alt="Meter" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=150&fit=crop" alt="HVAC" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=200&h=150&fit=crop" alt="Clean Room" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1517420704952-d9f39e95b43e?w=200&h=150&fit=crop" alt="PLC" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=200&h=150&fit=crop" alt="Temperature" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1563770660941-20978e870e26?w=200&h=150&fit=crop" alt="Multimeter" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=200&h=150&fit=crop" alt="RPM Meter" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=200&h=150&fit=crop" alt="Air Unit" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1581093458791-9d42e3c7e117?w=200&h=150&fit=crop" alt="Validation" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=200&h=150&fit=crop" alt="Process" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=200&h=150&fit=crop" alt="Testing" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1581092335397-9583eb92d232?w=200&h=150&fit=crop" alt="Equipment" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdeb6b?w=200&h=150&fit=crop" alt="Sensors" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=200&h=150&fit=crop" alt="Circuit" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=200&h=150&fit=crop" alt="Analysis" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=200&h=150&fit=crop" alt="Industrial" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                
+                <!-- Duplicate Set for Seamless Loop -->
+                <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=200&h=150&fit=crop" alt="Calibration" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?w=200&h=150&fit=crop" alt="Pressure Gauge" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=200&h=150&fit=crop" alt="Laboratory" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=200&h=150&fit=crop" alt="Instruments" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?w=200&h=150&fit=crop" alt="Meter" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=150&fit=crop" alt="HVAC" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=200&h=150&fit=crop" alt="Clean Room" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1517420704952-d9f39e95b43e?w=200&h=150&fit=crop" alt="PLC" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=200&h=150&fit=crop" alt="Temperature" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1563770660941-20978e870e26?w=200&h=150&fit=crop" alt="Multimeter" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=200&h=150&fit=crop" alt="RPM Meter" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=200&h=150&fit=crop" alt="Air Unit" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1581093458791-9d42e3c7e117?w=200&h=150&fit=crop" alt="Validation" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=200&h=150&fit=crop" alt="Process" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=200&h=150&fit=crop" alt="Testing" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1581092335397-9583eb92d232?w=200&h=150&fit=crop" alt="Equipment" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdeb6b?w=200&h=150&fit=crop" alt="Sensors" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=200&h=150&fit=crop" alt="Circuit" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=200&h=150&fit=crop" alt="Analysis" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+                <img src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=200&h=150&fit=crop" alt="Industrial" class="strip-item w-48 h-32 object-cover rounded-lg shadow-md">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-light-gray">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <span class="inline-block px-4 py-1 bg-teal-accent/10 text-teal-accent text-sm font-semibold rounded-full mb-4">OUR EXPERTISE</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-slate-dark mb-4">Comprehensive Service Portfolio</h2>
+                <div class="section-divider mx-auto mb-6"></div>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto">Explore our wide range of calibration and validation services, all backed by NABL accreditation and international standards compliance.</p>
+            </div>
+            
+            <!-- Service Controls -->
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
+                <!-- Tabs -->
+                <div class="flex bg-slate-dark/5 rounded-xl p-1.5">
+                    <button class="tab-btn active px-6 py-3 rounded-lg font-semibold transition-all duration-300" data-tab="calibration">
+                        <i class="fas fa-tools mr-2"></i>Calibration
+                    </button>
+                    <button class="tab-btn px-6 py-3 rounded-lg font-semibold text-gray-600 hover:text-slate-dark transition-all duration-300" data-tab="validation">
+                        <i class="fas fa-check-circle mr-2"></i>Validation
+                    </button>
+                </div>
+                
+                <!-- Search -->
+                <div class="relative w-full md:w-80">
+                    <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    <input type="text" id="service-search" placeholder="Search services..." class="w-full pl-12 pr-4 py-3 bg-white border border-gray-200 rounded-xl focus:outline-none focus:border-teal-accent focus:ring-2 focus:ring-teal-accent/20 transition-all duration-300">
+                </div>
+            </div>
+            
+            <!-- Service Cards Grid -->
+            <div id="services-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Calibration Services -->
+                <div class="service-card bg-white rounded-2xl p-6 border border-gray-100 shadow-sm" data-category="calibration" data-keywords="pressure gauge indicator vacuum switch transmitter differential magnehelic recorder dead weight tester">
+                    <div class="card-icon w-14 h-14 bg-teal-accent/10 text-teal-accent rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-tachometer-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-dark mb-2">Pressure Calibration</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Pressure gauges, vacuum gauges, transmitters, differential pressure indicators, magnehelic gauges, and dead weight testers.</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-teal-accent/10 text-teal-accent text-xs rounded-full">Gauges</span>
+                        <span class="px-2 py-1 bg-teal-accent/10 text-teal-accent text-xs rounded-full">Transmitters</span>
+                    </div>
+                </div>
+                
+                <div class="service-card bg-white rounded-2xl p-6 border border-gray-100 shadow-sm" data-category="calibration" data-keywords="temperature sensor rtd pt-100 thermocouple indicator controller transmitter recorder data logger hygrometer humidity oven bath furnace chamber thermometer pyrometer imager incubator stability">
+                    <div class="card-icon w-14 h-14 bg-teal-accent/10 text-teal-accent rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-thermometer-half text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-dark mb-2">Thermal Calibration</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Temperature sensors (RTD, PT-100, Thermocouples), indicators, transmitters, data loggers, hygrometers, ovens, baths, and environmental chambers.</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-teal-accent/10 text-teal-accent text-xs rounded-full">Sensors</span>
+                        <span class="px-2 py-1 bg-teal-accent/10 text-teal-accent text-xs rounded-full">Chambers</span>
+                    </div>
+                </div>
+                
+                <div class="service-card bg-white rounded-2xl p-6 border border-gray-100 shadow-sm" data-category="calibration" data-keywords="multifunction calibrator multimeter voltmeter ammeter transducer decade box electrical digital analog ac dc">
+                    <div class="card-icon w-14 h-14 bg-teal-accent/10 text-teal-accent rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-bolt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-dark mb-2">Electro-Technical</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Multifunction calibrators, multimeters, voltmeters, ammeters (Digital/Analog), 4-20mA transducers, and decade resistance boxes.</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-teal-accent/10 text-teal-accent text-xs rounded-full">Meters</span>
+                        <span class="px-2 py-1 bg-teal-accent/10 text-teal-accent text-xs rounded-full">Calibrators</span>
+                    </div>
+                </div>
+                
+                <div class="service-card bg-white rounded-2xl p-6 border border-gray-100 shadow-sm" data-category="calibration" data-keywords="liquid flow water rota meter flow measurement">
+                    <div class="card-icon w-14 h-14 bg-teal-accent/10 text-teal-accent rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-water text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-dark mb-2">Liquid Flow</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Liquid flow meters, water meters, and rotameters with precision calibration for accurate flow measurement.</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-teal-accent/10 text-teal-accent text-xs rounded-full">Flow Meters</span>
+                        <span class="px-2 py-1 bg-teal-accent/10 text-teal-accent text-xs rounded-full">Rotameters</span>
+                    </div>
+                </div>
+                
+                <div class="service-card bg-white rounded-2xl p-6 border border-gray-100 shadow-sm" data-category="calibration" data-keywords="weighing balance weights mass measurement">
+                    <div class="card-icon w-14 h-14 bg-teal-accent/10 text-teal-accent rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-balance-scale text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-dark mb-2">Mass Calibration</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Precision calibration of weighing balances and standard weights for accurate mass measurements.</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-teal-accent/10 text-teal-accent text-xs rounded-full">Balances</span>
+                        <span class="px-2 py-1 bg-teal-accent/10 text-teal-accent text-xs rounded-full">Weights</span>
+                    </div>
+                </div>
+                
+                <div class="service-card bg-white rounded-2xl p-6 border border-gray-100 shadow-sm" data-category="calibration" data-keywords="rpm tachometer centrifuge speed rotation">
+                    <div class="card-icon w-14 h-14 bg-teal-accent/10 text-teal-accent rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-sync-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-dark mb-2">Speed Calibration</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">RPM meters, tachometers, and centrifuge machines calibrated for precise rotational speed measurements.</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-teal-accent/10 text-teal-accent text-xs rounded-full">RPM</span>
+                        <span class="px-2 py-1 bg-teal-accent/10 text-teal-accent text-xs rounded-full">Tachometer</span>
+                    </div>
+                </div>
+                
+                <div class="service-card bg-white rounded-2xl p-6 border border-gray-100 shadow-sm" data-category="calibration" data-keywords="level transmitter indicator measurement tank">
+                    <div class="card-icon w-14 h-14 bg-teal-accent/10 text-teal-accent rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-layer-group text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-dark mb-2">Level Calibration</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Level transmitters and level indicators calibrated for accurate tank and vessel level measurements.</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-teal-accent/10 text-teal-accent text-xs rounded-full">Transmitters</span>
+                        <span class="px-2 py-1 bg-teal-accent/10 text-teal-accent text-xs rounded-full">Indicators</span>
+                    </div>
+                </div>
+                
+                <div class="service-card bg-white rounded-2xl p-6 border border-gray-100 shadow-sm" data-category="calibration" data-keywords="stopwatch timer counter totalizer time measurement">
+                    <div class="card-icon w-14 h-14 bg-teal-accent/10 text-teal-accent rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-stopwatch text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-dark mb-2">Time Calibration</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Stopwatches, timers, counters, and time totalizers calibrated for precise time measurements.</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-teal-accent/10 text-teal-accent text-xs rounded-full">Stopwatch</span>
+                        <span class="px-2 py-1 bg-teal-accent/10 text-teal-accent text-xs rounded-full">Timer</span>
+                    </div>
+                </div>
+                
+                <div class="service-card bg-white rounded-2xl p-6 border border-gray-100 shadow-sm" data-category="calibration" data-keywords="ph conductivity sensor transmitter orp meter analytical">
+                    <div class="card-icon w-14 h-14 bg-teal-accent/10 text-teal-accent rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-flask text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-dark mb-2">Analytical Instruments</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">pH meters, conductivity meters and sensors, ORP transmitters and sensors for precise analytical measurements.</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-teal-accent/10 text-teal-accent text-xs rounded-full">pH</span>
+                        <span class="px-2 py-1 bg-teal-accent/10 text-teal-accent text-xs rounded-full">Conductivity</span>
+                    </div>
+                </div>
+                
+                <!-- Validation Services -->
+                <div class="service-card bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hidden" data-category="validation" data-keywords="autoclave sterilizer cold room warehouse depyrogenation oven lyophilizer freezer photostability steam incubator stability washer cip dry heat furnace thermal">
+                    <div class="card-icon w-14 h-14 bg-teal-accent/10 text-teal-accent rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-fire-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-dark mb-2">Thermal Validation</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Autoclave/Sterilizer qualification, cold rooms, depyrogenation ovens, lyophilizers, stability chambers, and environmental equipment validation.</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-teal-accent/10 text-teal-accent text-xs rounded-full">Autoclaves</span>
+                        <span class="px-2 py-1 bg-teal-accent/10 text-teal-accent text-xs rounded-full">Chambers</span>
+                    </div>
+                </div>
+                
+                <div class="service-card bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hidden" data-category="validation" data-keywords="hvac clean room air flow acph filter pao particle recovery pressure pattern containment temperature humidity light sound ahu">
+                    <div class="card-icon w-14 h-14 bg-teal-accent/10 text-teal-accent rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-wind text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-dark mb-2">HVAC & Clean Room</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Air flow tests, ACPH calculations, filter leakage testing (PAO), particle counts, recovery tests, pressure balancing, and environmental measurements.</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-teal-accent/10 text-teal-accent text-xs rounded-full">Air Flow</span>
+                        <span class="px-2 py-1 bg-teal-accent/10 text-teal-accent text-xs rounded-full">Clean Room</span>
+                    </div>
+                </div>
+                
+                <div class="service-card bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hidden" data-category="validation" data-keywords="plc scada das bms hmi mmi dcs computer system automation programmable logic control supervisory data acquisition">
+                    <div class="card-icon w-14 h-14 bg-teal-accent/10 text-teal-accent rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-microchip text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-dark mb-2">PLC Validation</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">PLC, SCADA/DAS systems, BMS, HMI/MMI, DCS, and computer-based laboratory systems validation and compliance.</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-teal-accent/10 text-teal-accent text-xs rounded-full">SCADA</span>
+                        <span class="px-2 py-1 bg-teal-accent/10 text-teal-accent text-xs rounded-full">DCS</span>
+                    </div>
+                </div>
+                
+                <div class="service-card bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hidden" data-category="validation" data-keywords="compressed air moisture water vapour viable count carbon monoxide dioxide sulphur dioxide hydrocarbon nitrogen oxygen dew point oil mist particle hydrogen sulfide">
+                    <div class="card-icon w-14 h-14 bg-teal-accent/10 text-teal-accent rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-compress-arrows-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-dark mb-2">Compressed Air Validation</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Water vapour content, viable counts, CO/CO2/SO2 analysis, dew point, oil mist, particle counts, and gas purity testing.</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-teal-accent/10 text-teal-accent text-xs rounded-full">Air Quality</span>
+                        <span class="px-2 py-1 bg-teal-accent/10 text-teal-accent text-xs rounded-full">Gas Analysis</span>
+                    </div>
+                </div>
+                
+                <div class="service-card bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hidden" data-category="validation" data-keywords="steam quality non-condensable gases super-heated dryness value">
+                    <div class="card-icon w-14 h-14 bg-teal-accent/10 text-teal-accent rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-cloud text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-dark mb-2">Steam Quality Test</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Non-condensable gases testing, super-heated steam analysis, and dryness value determination for steam systems.</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-teal-accent/10 text-teal-accent text-xs rounded-full">Steam</span>
+                        <span class="px-2 py-1 bg-teal-accent/10 text-teal-accent text-xs rounded-full">Quality</span>
+                    </div>
+                </div>
+                
+                <div class="service-card bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hidden" data-category="validation" data-keywords="process iq oq pq protocol installation operational performance qualification">
+                    <div class="card-icon w-14 h-14 bg-teal-accent/10 text-teal-accent rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-clipboard-check text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-dark mb-2">Process Validation</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Complete IQ/OQ/PQ protocol development and execution for pharmaceutical and industrial process validation requirements.</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-teal-accent/10 text-teal-accent text-xs rounded-full">IQ/OQ/PQ</span>
+                        <span class="px-2 py-1 bg-teal-accent/10 text-teal-accent text-xs rounded-full">Protocols</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- No Results Message -->
+            <div id="no-results" class="hidden text-center py-16">
+                <i class="fas fa-search text-6xl text-gray-300 mb-4"></i>
+                <h3 class="text-xl font-semibold text-gray-600 mb-2">No services found</h3>
+                <p class="text-gray-500">Try adjusting your search terms or browse all services.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-slate-dark relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 grid-pattern opacity-50"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Image Side -->
+                <div class="relative">
+                    <div class="relative rounded-2xl overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80" alt="SITS Laboratory" class="w-full h-96 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-dark/80 to-transparent"></div>
+                    </div>
+                    
+                    <!-- Floating Stats Card -->
+                    <div class="absolute -bottom-8 -right-8 bg-white p-6 rounded-2xl shadow-2xl">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-16 h-16 cert-badge rounded-xl flex items-center justify-center">
+                                <i class="fas fa-award text-white text-2xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-3xl font-bold text-slate-dark">ISO</p>
+                                <p class="text-gray-600 text-sm">17025:2017</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Experience Badge -->
+                    <div class="absolute -top-4 -left-4 bg-teal-accent text-white px-6 py-3 rounded-xl shadow-lg">
+                        <span class="font-bold">8+ Years</span> of Excellence
+                    </div>
+                </div>
+                
+                <!-- Content Side -->
+                <div class="space-y-8">
+                    <div>
+                        <span class="inline-block px-4 py-1 bg-teal-accent/20 text-teal-accent text-sm font-semibold rounded-full mb-4">WHY CHOOSE SITS</span>
+                        <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Committed to <span class="text-teal-accent">Precision</span> & Quality</h2>
+                        <div class="section-divider mb-6"></div>
+                    </div>
+                    
+                    <p class="text-gray-300 text-lg leading-relaxed">
+                        Sanjeevani Integrated Technological Solutions (SITS) is India's leading NABL-accredited calibration laboratory, dedicated to delivering world-class instrument calibration and validation services that meet the highest international standards.
+                    </p>
+                    
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-teal-accent/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-certificate text-teal-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">NABL Accredited</h4>
+                                <p class="text-gray-400 text-sm">ISO/IEC 17025:2017 certified laboratory</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-teal-accent/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-users text-teal-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">Expert Team</h4>
+                                <p class="text-gray-400 text-sm">Highly qualified instrumentation engineers</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-teal-accent/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-link text-teal-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">Traceability</h4>
+                                <p class="text-gray-400 text-sm">National & international standards</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-teal-accent/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-clock text-teal-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">Quick Turnaround</h4>
+                                <p class="text-gray-400 text-sm">Fast, professional service delivery</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-4">
+                        <a href="#contact" class="inline-flex items-center px-8 py-4 bg-teal-accent hover:bg-teal-hover text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-xl hover:shadow-teal-accent/30">
+                            <i class="fas fa-handshake mr-2"></i>
+                            Partner With Us
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-24 bg-light-gray">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="inline-block px-4 py-1 bg-teal-accent/10 text-teal-accent text-sm font-semibold rounded-full mb-4">ACCREDITATIONS</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-slate-dark mb-4">Trusted Certifications</h2>
+                <div class="section-divider mx-auto mb-6"></div>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto">Our laboratory operates under strict compliance with national and international quality standards.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-8 text-center border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300">
+                    <div class="w-20 h-20 mx-auto mb-6 cert-badge rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-medal text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-dark mb-2">NABL Accredited</h3>
+                    <p class="text-gray-600">National Accreditation Board for Testing and Calibration Laboratories</p>
+                    <div class="mt-4 inline-block px-4 py-2 bg-teal-accent/10 text-teal-accent rounded-lg text-sm font-semibold">ISO/IEC 17025:2017</div>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 text-center border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300">
+                    <div class="w-20 h-20 mx-auto mb-6 cert-badge rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-globe text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-dark mb-2">International Standards</h3>
+                    <p class="text-gray-600">Equipment traceability to national and international measurement standards</p>
+                    <div class="mt-4 inline-block px-4 py-2 bg-teal-accent/10 text-teal-accent rounded-lg text-sm font-semibold">Global Compliance</div>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 text-center border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300">
+                    <div class="w-20 h-20 mx-auto mb-6 cert-badge rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-shield-alt text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-dark mb-2">Quality Assured</h3>
+                    <p class="text-gray-600">Continuous improvement on all SOPs with comprehensive audit support</p>
+                    <div class="mt-4 inline-block px-4 py-2 bg-teal-accent/10 text-teal-accent rounded-lg text-sm font-semibold">Audit Ready</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-slate-dark relative overflow-hidden">
+        <div class="absolute inset-0 grid-pattern opacity-50"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="inline-block px-4 py-1 bg-teal-accent/20 text-teal-accent text-sm font-semibold rounded-full mb-4">GET IN TOUCH</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Request a Quote</h2>
+                <div class="section-divider mx-auto mb-6"></div>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">Have questions about our services? We're here to help. Contact us for a customized quote.</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Contact Info & Map -->
+                <div class="space-y-8">
+                    <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+                        <h3 class="text-2xl font-bold text-white mb-6">Contact Information</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-teal-accent/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-phone-alt text-teal-accent"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-semibold mb-1">Phone</h4>
+                                    <a href="tel:+919701719993" class="text-gray-400 hover:text-teal-accent transition-colors">+91 97017 19993</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-teal-accent/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-envelope text-teal-accent"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-semibold mb-1">Email</h4>
+                                    <a href="mailto:md.sitsbharat@gmail.com" class="text-gray-400 hover:text-teal-accent transition-colors">md.sitsbharat@gmail.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-teal-accent/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-map-marker-alt text-teal-accent"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-semibold mb-1">Address</h4>
+                                    <p class="text-gray-400">Sanjeevani Integrated Technological Solutions<br>Hyderabad, Telangana, India</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-teal-accent/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-clock text-teal-accent"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-semibold mb-1">Business Hours</h4>
+                                    <p class="text-gray-400">Mon - Sat: 9:00 AM - 6:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Map Placeholder -->
+                    <div class="rounded-2xl overflow-hidden h-64 bg-white/5 border border-white/10">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.3170899874!2d78.24323114735447!3d17.41281394898697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c7%3A0xae93b78392bafbc2!2sHyderabad%2C%20Telangana%2C%20India!5e0!3m2!1sen!2sus!4v1699400000000!5m2!1sen!2sus" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            class="grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+                        </iframe>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="bg-white rounded-2xl p-8 shadow-2xl">
+                    <h3 class="text-2xl font-bold text-slate-dark mb-6">Send us a Message</h3>
+                    
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                                <input type="text" id="name" name="name" required class="form-input w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none transition-all duration-300" placeholder="John Doe">
+                                <p class="error-message text-red-500 text-xs mt-1 hidden">Please enter your name</p>
+                            </div>
+                            <div>
+                                <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company</label>
+                                <input type="text" id="company" name="company" class="form-input w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none transition-all duration-300" placeholder="Your Company">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                            <input type="email" id="email" name="email" required class="form-input w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none transition-all duration-300" placeholder="john@company.com">
+                            <p class="error-message text-red-500 text-xs mt-1 hidden">Please enter a valid email</p>
+                        </div>
+                        
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-input w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none transition-all duration-300" placeholder="+91 9876543210">
+                        </div>
+                        
+                        <div>
+                            <label for="service" class="block text-sm font-medium text-gray-700 mb-2">Service Required</label>
+                            <select id="service" name="service" class="form-input w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none transition-all duration-300 bg-white">
+                                <option value="">Select a service</option>
+                                <option value="calibration">Instrument Calibration</option>
+                                <option value="thermal-validation">Thermal Validation</option>
+                                <option value="hvac">HVAC & Clean Room Validation</option>
+                                <option value="plc">PLC Validation</option>
+                                <option value="compressed-air">Compressed Air Validation</option>
+                                <option value="steam">Steam Quality Testing</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message *</label>
+                            <textarea id="message" name="message" rows="4" required class="form-input w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none transition-all duration-300 resize-none" placeholder="Tell us about your requirements..."></textarea>
+                            <p class="error-message text-red-500 text-xs mt-1 hidden">Please enter your message</p>
+                        </div>
+                        
+                        <button type="submit" class="w-full py-4 bg-teal-accent hover:bg-teal-hover text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-teal-accent/30 flex items-center justify-center">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Send Message
+                        </button>
+                    </form>
+                    
+                    <!-- Success Message -->
+                    <div id="form-success" class="hidden text-center py-8">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-green-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-check text-green-500 text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-dark mb-2">Message Sent!</h4>
+                        <p class="text-gray-600">Thank you for contacting us. We'll get back to you shortly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-slate-dark border-t border-white/10 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <!-- Brand -->
+                <div class="md:col-span-2">
+                    <a href="#home" class="flex items-center space-x-3 mb-6">
+                        <div class="w-12 h-12 bg-teal-accent rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-xl">S</span>
+                        </div>
+                        <div>
+                            <span class="text-white font-bold text-xl">SITS</span>
+                            <span class="block text-gray-400 text-xs">Sanjeevani Integrated Technological Solutions</span>
+                        </div>
+                    </a>
+                    <p class="text-gray-400 mb-6 max-w-md">India's trusted NABL-accredited laboratory for precision instrument calibration and industrial validation services.</p>
+                    <div class="flex items-center space-x-3">
+                        <div class="px-4 py-2 bg-teal-accent/10 border border-teal-accent/30 rounded-lg">
+                            <span class="text-teal-accent text-sm font-semibold">NABL Accredited</span>
+                        </div>
+                        <div class="px-4 py-2 bg-white/5 border border-white/10 rounded-lg">
+                            <span class="text-gray-400 text-sm">ISO/IEC 17025:2017</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-semibold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-teal-accent transition-colors">Home</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-teal-accent transition-colors">Services</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-teal-accent transition-colors">About Us</a></li>
+                        <li><a href="#certifications" class="text-gray-400 hover:text-teal-accent transition-colors">Certifications</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-teal-accent transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div>
+                    <h4 class="text-white font-semibold mb-6">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#services" class="text-gray-400 hover:text-teal-accent transition-colors">Calibration</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-teal-accent transition-colors">Thermal Validation</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-teal-accent transition-colors">HVAC Validation</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-teal-accent transition-colors">PLC Validation</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-teal-accent transition-colors">Steam Quality Test</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Social & Copyright -->
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2024 Sanjeevani Integrated Technological Solutions. All rights reserved.</p>
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="w-10 h-10 bg-white/5 hover:bg-teal-accent rounded-lg flex items-center justify-center transition-all duration-300 group">
+                        <i class="fab fa-linkedin-in text-gray-400 group-hover:text-white"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-white/5 hover:bg-teal-accent rounded-lg flex items-center justify-center transition-all duration-300 group">
+                        <i class="fab fa-twitter text-gray-400 group-hover:text-white"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-white/5 hover:bg-teal-accent rounded-lg flex items-center justify-center transition-all duration-300 group">
+                        <i class="fab fa-facebook-f text-gray-400 group-hover:text-white"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-white/5 hover:bg-teal-accent rounded-lg flex items-center justify-center transition-all duration-300 group">
+                        <i class="fab fa-whatsapp text-gray-400 group-hover:text-white"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 bg-teal-accent hover:bg-teal-hover text-white rounded-full shadow-lg hidden items-center justify-center transition-all duration-300 hover:-translate-y-1 z-50">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('visible');
+            menuIcon.classList.toggle('fa-bars');
+            menuIcon.classList.toggle('fa-times');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('visible');
+                menuIcon.classList.add('fa-bars');
+                menuIcon.classList.remove('fa-times');
+            });
+        });
+        
+        // Navbar scroll behavior
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('shadow-lg');
+            } else {
+                navbar.classList.remove('shadow-lg');
+            }
+        });
+        
+        // Service Tabs Functionality
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const serviceCards = document.querySelectorAll('.service-card');
+        const noResults = document.getElementById('no-results');
+        const searchInput = document.getElementById('service-search');
+        
+        let currentTab = 'calibration';
+        
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active tab
+                tabButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentTab = btn.dataset.tab;
+                
+                // Clear search
+                searchInput.value = '';
+                
+                // Filter cards
+                filterServices();
+            });
+        });
+        
+        // Search Functionality
+        searchInput.addEventListener('input', (e) => {
+            filterServices(e.target.value.toLowerCase());
+        });
+        
+        function filterServices(searchTerm = '') {
+            let visibleCount = 0;
+            
+            serviceCards.forEach(card => {
+                const category = card.dataset.category;
+                const keywords = card.dataset.keywords.toLowerCase();
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                
+                const matchesTab = category === currentTab;
+                const matchesSearch = !searchTerm || 
+                    keywords.includes(searchTerm) || 
+                    title.includes(searchTerm) || 
+                    description.includes(searchTerm);
+                
+                if (matchesTab && matchesSearch) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+            
+            // Show/hide no results message
+            if (visibleCount === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+            }
+        }
+        
+        // Form Validation
+        const contactForm = document.getElementById('contact-form');
+        const formSuccess = document.getElementById('form-success');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            let isValid = true;
+            const requiredFields = ['name', 'email', 'message'];
+            
+            requiredFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                const errorMsg = field.parentElement.querySelector('.error-message');
+                
+                if (!field.value.trim()) {
+                    field.classList.add('error');
+                    field.classList.remove('valid');
+                    if (errorMsg) errorMsg.classList.remove('hidden');
+                    isValid = false;
+                } else if (fieldId === 'email' && !isValidEmail(field.value)) {
+                    field.classList.add('error');
+                    field.classList.remove('valid');
+                    if (errorMsg) errorMsg.classList.remove('hidden');
+                    isValid = false;
+                } else {
+                    field.classList.remove('error');
+                    field.classList.add('valid');
+                    if (errorMsg) errorMsg.classList.add('hidden');
+                }
+            });
+            
+            if (isValid) {
+                // Show success message
+                contactForm.classList.add('hidden');
+                formSuccess.classList.remove('hidden');
+                
+                // Reset after 5 seconds
+                setTimeout(() => {
+                    contactForm.reset();
+                    contactForm.classList.remove('hidden');
+                    formSuccess.classList.add('hidden');
+                    document.querySelectorAll('.form-input').forEach(input => {
+                        input.classList.remove('valid', 'error');
+                    });
+                }, 5000);
+            }
+        });
+        
+        // Real-time validation
+        document.querySelectorAll('.form-input').forEach(input => {
+            input.addEventListener('blur', function() {
+                const errorMsg = this.parentElement.querySelector('.error-message');
+                
+                if (this.required && !this.value.trim()) {
+                    this.classList.add('error');
+                    this.classList.remove('valid');
+                    if (errorMsg) errorMsg.classList.remove('hidden');
+                } else if (this.type === 'email' && this.value && !isValidEmail(this.value)) {
+                    this.classList.add('error');
+                    this.classList.remove('valid');
+                    if (errorMsg) errorMsg.classList.remove('hidden');
+                } else if (this.value.trim()) {
+                    this.classList.remove('error');
+                    this.classList.add('valid');
+                    if (errorMsg) errorMsg.classList.add('hidden');
+                } else {
+                    this.classList.remove('error', 'valid');
+                    if (errorMsg) errorMsg.classList.add('hidden');
+                }
+            });
+        });
+        
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+        
+        // Back to Top Button
+        const backToTop = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.classList.remove('hidden');
+                backToTop.classList.add('flex');
+            } else {
+                backToTop.classList.add('hidden');
+                backToTop.classList.remove('flex');
+            }
+        });
+        
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Counter Animation
+        const counters = document.querySelectorAll('.stat-number[data-count]');
+        let hasAnimated = false;
+        
+        function animateCounters() {
+            counters.forEach(counter => {
+                const target = parseInt(counter.dataset.count);
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+                
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.textContent = Math.floor(current).toLocaleString() + '+';
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target.toLocaleString() + '+';
+                    }
+                };
+                
+                updateCounter();
+            });
+        }
+        
+        // Intersection Observer for counter animation
+        const statsSection = document.getElementById('stats');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !hasAnimated) {
+                    animateCounters();
+                    hasAnimated = true;
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(statsSection);
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
